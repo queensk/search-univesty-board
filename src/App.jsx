@@ -9,7 +9,7 @@ export default function App() {
   const [searchResult, setSearchResult] = useState([]);
   const [error, setError] = useState(false);
   const searchDataHandler = (data) => {
-    fetch(`http://universities.hipolabs.com/search?country=${data}`)
+    fetch(`https://universities.hipolabs.com/search?country=${data}`)
       .then((res) => res.json())
       .then((data) => {
         setSearchResult(data);
