@@ -1,0 +1,45 @@
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3%;
+}
+.search input,
+.search button {
+  width: 40%;
+  height: auto;
+  padding: 0.5%;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search button {
+  width: 20%;
+}
+
+/* showSchools */
+.showSchools {
+  text-align: center;
+  padding: 3%;
+}
+
+.schoolGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.school {
+  background-color: #4c9e94;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  min-height: 200px;
+  /* font-weight: 700; */
+  /* font-size: 25px; */
+  padding: 10px;
+  border-radius: 5px;
+}
