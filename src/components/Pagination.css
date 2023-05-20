@@ -1,0 +1,37 @@
+.pagination-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.pagination {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.page-item {
+  margin-right: 5px;
+}
+
+.page-link {
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid #4f5873;
+  /* background-color: #127357; */
+  background-color: #010b40;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.page-link.active {
+  font-weight: bold;
+  background-color: #4f5873;
+}
+
+.page-link:hover {
+  background-color: #4f5873;
+}
