@@ -2,38 +2,58 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Search from "./components/search";
 import ShowSchools from "./components/ShowSchools";
-import FilterInput from "./components/filterInput";
+import ObjectFilter from "./components/ObjectFilter";
 
 export default function App() {
   const [searchData, setSearchData] = useState("");
   const [searchResult, setSearchResult] = useState([]);
+  const [filteredDataType, setFilteredDataType] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
+
   const searchDataHandler = (data) => {
-    fetch(`https://universities.hipolabs.com/search?country=${data}`)
+    fetch(`http://universities.hipolabs.com/search?country=${data}`)
       .then((res) => res.json())
       .then((data) => {
         setSearchResult(data);
+        console.log(data);
+        setIsLoading(false);
       })
       .catch((error) => {
         setError(true);
-        console.log(error);
         setSearchResult([]);
         setSearchData("");
-        setError(false);
+        setIsLoading(false);
+        console.log(error);
       });
   };
+
   useEffect(() => {
-    searchDataHandler(searchData);
-  }, []);
+    if (searchResult <= 0) {
+      searchDataHandler(searchData);
+    }
+    setFilteredDataType(searchResult);
+  }, [searchResult]);
+
   return (
     <div className="App">
+      <h1>Search for your favorite Universities</h1>
       <Search
         searchData={searchData}
         setSearchData={setSearchData}
         searchDataHandler={searchDataHandler}
       />
-      <FilterInput />
-      <ShowSchools searchResult={searchResult} searchData={searchData} x />
+      <ObjectFilter
+        data={searchResult}
+        setSearchResult={setFilteredDataType}
+        searchDataHandler={searchDataHandler}
+        setFilteredDataType={setFilteredDataType}
+      />
+      {isLoading ? (
+        <div className="loading">Loading...</div>
+      ) : (
+        <ShowSchools searchResult={filteredDataType} searchData={searchData} />
+      )}
     </div>
   );
 }
