@@ -12,7 +12,7 @@ export default function App() {
   const [error, setError] = useState(false);
 
   const searchDataHandler = (data) => {
-    fetch(`http://universities.hipolabs.com/search?country=${data}`)
+    fetch(`https://universitiesapi.onrender.com/v1/api/universities/${data}`)
       .then((res) => res.json())
       .then((data) => {
         setSearchResult(data);
